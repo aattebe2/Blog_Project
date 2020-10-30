@@ -7,28 +7,54 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<link rel="apple-touch-icon" href="./assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <script src="./contact.js"></script>
+    <link rel="apple-touch-icon" href="./assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="./assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="manifest" href="./assets/img/favicons/manifest.json">
     <link rel="icon" href="./assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="./assets/img/favicons/favicon.ico">
     <meta name="msapplication-config" content="./assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#396c4a">
-    <title>Austin Atteberry | Contact</title>
+    <style>
+        input, select, textarea {
+            border-radius: 3px;
+        }
+
+        textarea {
+            height: 15em;
+            width: 15em;
+            resize: none;
+        }
+
+        .fix-row-margin {
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+        }
+
+        .error {
+            color: #ffa229;
+            font-size: 90%;
+        }
+
+        .input-error {
+            border: 2px solid #ffa229;
+        }
+    </style>
+    <title>IndyCar Blog | Contact</title>
 </head>
 
-<body>
+<body onload="resetContactForm()">
     
     <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="./index.html" tabindex="1">Home</a>
+                <a class="nav-link" href="./index.html" tabindex="0">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./blog.html" tabindex="2">Blog</a>
+                <a class="nav-link" href="./blog.html" tabindex="0">Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./about.html" tabindex="3">About</a>
+                <a class="nav-link" href="./about.html" tabindex="0">About</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Contact <span class="sr-only">(current)</span></a>
@@ -37,6 +63,125 @@
     </nav>
 
     <main role="main" class="position-relative overflow-hidden text-center container-fluid vector-background">
+
+        <div class="row">
+            <h1 class="col display-1 font-weight-normal">Contact Us</h1>
+        </div>
+
+        <div class="row">
+            <div class="col font-weight-normal">
+                <br /><br />
+            </div>
+        </div>
+        
+        <form name="contactForm" onsubmit="return submitContact()" method="post">
+            <div class="row align-items-top fix-row-margin">
+                <div class="col-2"></div>
+                <div class="col text-right font-weight-normal">
+                    <label for="fName">First Name:</label>
+                </div>
+                <div class="col text-left font-weight-normal">
+                    <input type="text" id="fName" name="fName" tabindex="1" maxlength="50" placeholder="Your first name..." autofocus>
+                    <div class="error" id="fnameErr"></div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row align-items-top fix-row-margin">
+                <div class="col-2"></div>
+                <div class="col text-right font-weight-normal">
+                    <label for="lName">Last Name:</label>
+                </div>
+                <div class="col text-left font-weight-normal">
+                    <input type="text" id="lName" name="lName" tabindex="2" maxlength="50" placeholder="Your last name...">
+                    <div class="error" id="lnameErr"></div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row align-items-top fix-row-margin">
+                <div class="col-2"></div>
+                <div class="col text-right font-weight-normal">
+                    <label for="email">Email Address:</label>
+                </div>
+                <div class="col text-left font-weight-normal">
+                    <input type="text" id="email" name="email" tabindex="3" maxlength="75" placeholder="Your email address...">
+                    <div class="error" id="emailErr"></div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row align-items-center fix-row-margin">
+                <div class="col-2"></div>
+                <div class="col text-right font-weight-normal">
+                    <label for="country">Country:</label>
+                </div>
+                <div class="col text-left font-weight-normal">
+                    <select id="country" name="country" tabindex="4">
+                        <option disabled selected></option><option>United States</option><option disabled>--------------------------------</option><option>Afghanistan</option>
+                        <option>Albania</option><option>Algeria</option><option>American Samoa</option><option>Andorra</option><option>Angola</option><option>Anguilla</option>
+                        <option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Aruba</option><option>Australia</option><option>Austria</option>
+                        <option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option>
+                        <option>Belgium</option><option>Belize</option><option>Benin</option><option>Bermuda</option><option>Bhutan</option><option>Bolivia</option>
+                        <option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>British Virgin Islands</option><option>Brunei Darussalam</option>
+                        <option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cambodia</option><option>Cameroon</option><option>Canada</option>
+                        <option>Cape Verde</option><option>Cayman Islands</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option>
+                        <option>Christmas Island</option><option>Cocos Islands</option><option>Colombia</option><option>Comoros</option><option>Cook Islands</option><option>Costa Rica</option>
+                        <option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czech Republic</option><option>Democratic Republic of the Congo</option>
+                        <option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>East Timor</option><option>Ecuador</option>
+                        <option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Ethiopia</option>
+                        <option>Falkland Islands</option><option>Faroe Islands</option><option>Federal States of Micronesia</option><option>Fiji</option><option>Finland</option>
+                        <option>France</option><option>French Guiana</option><option>French Polynesia</option><option>French Southern Territories</option><option>Gabon</option>
+                        <option>Georgia</option><option>Germany</option><option>Ghana</option><option>Gibraltar</option><option>Greece</option><option>Greenland</option><option>Grenada</option>
+                        <option>Guadeloupe</option><option>Guam</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option>
+                        <option>Haiti</option><option>Honduras</option><option>Hong Kong</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option>
+                        <option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Ivory Coast</option><option>Jamaica</option>
+                        <option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kosovo</option><option>Kuwait</option>
+                        <option>Kyrgyzstan</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option>
+                        <option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Macau</option><option>Madagascar</option><option>Malawi</option>
+                        <option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Martinique</option>
+                        <option>Mauritania</option><option>Mauritius</option><option>Mayotte</option><option>Mexico</option><option>Monaco</option><option>Mongolia</option>
+                        <option>Montenegro</option><option>Montserrat</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option><option>Namibia</option>
+                        <option>Nauru</option><option>Nepal</option><option>Netherlands</option><option>Netherlands Antilles</option><option>New Caledonia</option><option>New Zealand</option>
+                        <option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>Niue</option><option>North Korea</option><option>North Macedonia</option>
+                        <option>Northern Mariana Islands</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palau</option>
+                        <option>Palestinian territories</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>People's Democratic Republic Lao</option>
+                        <option>Peru</option><option>Philippines</option><option>Pitcairn Island</option><option>Poland</option><option>Portugal</option><option>Puerto Rico</option>
+                        <option>Qatar</option><option>Republic of Congo</option><option>Republic of Moldova</option><option>Reunion Island</option><option>Romania</option>
+                        <option>Russian Federation</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option>
+                        <option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option><option>Saudi Arabia</option>
+                        <option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Singapore</option><option>Slovakia</option>
+                        <option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Africa</option><option>South Korea</option><option>South Sudan</option>
+                        <option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Suriname</option><option>Swaziland</option><option>Sweden</option>
+                        <option>Switzerland</option><option>Syria</option><option>Taiwan</option><option>Tajikistan</option><option>Thailand</option><option>The Gambia</option>
+                        <option>Tibet</option><option>Togo</option><option>Tokelau</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option>
+                        <option>Turkey</option><option>Turkmenistan</option><option>Turks and Caicos Islands</option><option>Tuvalu</option><option>U.S. Virgin Islands</option>
+                        <option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United Republic of Tanzania</option>
+                        <option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option>
+                        <option>Wallis and Futuna Islands</option><option>Western Sahara</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
+                    </select>
+                    <div class="error" id="countryErr"></div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row align-items-top fix-row-margin">
+                <div class="col-2"></div>
+                <div class="col text-right font-weight-normal">
+                    <label for="message">Message:</label>
+                </div>
+                <div class="col text-left font-weight-normal">
+                    <textarea name="message" id="message" tabindex="5" placeholder="Your message..."></textarea>
+                    <div class="error" id="messageErr"></div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row align-items-center fix-row-margin">
+                <div class="col-2"></div>
+                <div class="col"></div>
+                <div class="col text-left font-weight-normal">
+                    <input class="btn btn-info btn-md" type="submit" value="Submit">
+                </div>
+                <div class="col"></div>
+            </div>
+        </form>
+
     </main>
 
 </body>
