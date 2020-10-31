@@ -14,6 +14,16 @@
     <link rel="icon" href="./assets/img/favicons/favicon.ico">
     <meta name="msapplication-config" content="./assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#396c4a">
+    <style>
+        figcaption {
+            color: #cfcfcf;
+        }
+
+        .fix-row-margin {
+            margin-top: 5em;
+            margin-bottom: 5em;
+        }
+    </style>
     <title>IndyCar Blog | About</title>
 </head>
 
@@ -36,10 +46,31 @@
         </ul>
     </nav>
 
-    <main role="main" class="position-relative overflow-hidden text-center container-fluid vector-background">
+    <main role="main" class="position-relative text-center container-fluid vector-background">
 
         <div class="row">
             <h1 class="col display-1 font-weight-normal">About IndyCar</h1>
+        </div>
+
+        <div class="row">
+            <div class="col font-weight-normal">
+                <br /><br />
+            </div>
+        </div>
+
+        <div class="row align-items-center fix-row-margin">
+            <div class="col-2"></div>
+            <div class="col text-justify font-weight-normal">
+                <p>IndyCar traces its origins back to 1908 when Indianapolis businessman Carl Fisher—along with investors James Allison, Arthur Newby, and Frank Wheeler—purchased a 328 acre property outside of Indianapolis for the purpose of building an automobile racing circuit.</p>
+                <p>Construction completed the following year in 1909.  Two years later, the first Indianapolis 500 Mile Race (Indy 500) was contested—culminating in a Ray Heroun victory. </p>
+            </div>
+            <div class="col">
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Carl_G_Fisher_1909.jpg" alt="Carl Fisher" class="img-fluid" style="max-width: 60%;" />
+                    <figcaption>Carl Fisher</figcaption>
+                </figure>
+            </div>
+            <div class="col-2"></div>
         </div>
 
     </main>

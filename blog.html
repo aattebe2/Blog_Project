@@ -7,17 +7,43 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<link rel="apple-touch-icon" href="./assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <script src="./blog.js"></script>
+    <link rel="apple-touch-icon" href="./assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="./assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="manifest" href="./assets/img/favicons/manifest.json">
     <link rel="icon" href="./assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="./assets/img/favicons/favicon.ico">
     <meta name="msapplication-config" content="./assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#396c4a">
+    <style>
+        textarea {
+            border-radius: 3px;
+            height: 20em;
+            width: 40em;
+            resize: none;
+        }
+
+        .fix-row-margin-top {
+            margin-top: 5em;
+        }
+
+        .fix-form-margin {
+            margin-top: 0.6em;
+        }
+
+        .error {
+            color: #ffa229;
+            font-size: 90%;
+        }
+
+        .input-error {
+            border: 2px solid #ffa229;
+        }
+    </style>
     <title>IndyCar Blog | Blog</title>
 </head>
 
-<body>
+<body onload="blogEntryHide()">
     
     <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark">
         <ul class="navbar-nav mr-auto">
@@ -36,10 +62,50 @@
         </ul>
     </nav>
 
-    <main role="main" class="position-relative overflow-hidden text-center container-fluid vector-background">
+    <main role="main" class="position-relative text-center container-fluid vector-background">
 
         <div class="row">
             <h1 class="col display-1 font-weight-normal">Blog</h1>
+        </div>
+
+        <form name="blogForm">
+            <span id="blogShowButton">
+                <div class="row align-items-center fix-row-margin-top">
+                    <div class="col-2"></div>
+                    <div class="col">
+                        <input class="btn btn-info btn-md" onclick="blogEntryShow()" id="btnAdd" name="btnAdd" type="button" value="Add Blog Entry">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </span>
+            <span id="blogEntry">
+                <div class="row align-items-center fix-row-margin-top">
+                    <div class="col-2"></div>
+                    <div class="col">
+                        <textarea id="blogText" name="blogText"></textarea>
+                        <div class="error" id="postContentErr"></div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row align-items-center fix-form-margin">
+                    <div class="col-6"></div>
+                    <div class="col text-right">
+                        <input class="btn btn-warning btn-md" onclick="blogEntryHide()" id="btnCancel" name="btnCancel" type="button" value="Cancel" />
+                    </div>
+                    <div class="col text-left">
+                        <input class="btn btn-info btn-md" onclick="blogPost()" id="btnPost" name="btnPost" type="button" value="Post">
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </span>
+        </form>
+
+        <div class="row align-items-center fix-row-margin-top">
+            <div class="col-2"></div>
+            <div class="col text-justify font-weight-normal">
+                <ul id="blogUL"></ul>
+            </div>
+            <div class="col-2"></div>
         </div>
 
     </main>
